@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int p;
+    printf("Введіть кількість розрядів (p): ");
+    scanf("%d", &p);
+
+    long long int prevNoTriple = 1, prevWithTriple = 0;
+
+    for (int i = 2; i <= p; i++) {
+        long long int currNoTriple = prevNoTriple + prevWithTriple;
+        prevWithTriple = prevNoTriple;
+        prevNoTriple = currNoTriple;
+    }
+
+    long long int totalCount = prevNoTriple + prevWithTriple;
+    printf("Кількість чисел із %d розрядів: %lld\n", p, totalCount);
+
+    return 0;
+}
